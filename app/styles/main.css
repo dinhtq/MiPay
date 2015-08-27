@@ -1,0 +1,221 @@
+/*@import url(http://fonts.googleapis.com/css?family=Roboto:300);*/
+
+
+
+
+.ui-page {
+	-webkit-backface-visibility: hidden;
+}
+
+.fa-bars{
+	width: 100% !important;
+}
+
+#navbars-icon {
+	float: left;
+	/*border: 1px solid red;*/
+	width: 10%;
+	margin-left: 5%;
+	margin-top: 3%;
+	font-weight: lighter;
+}
+
+
+
+
+
+.clndr-today-button{
+	margin-top: 5%;
+}
+
+#btnToday{
+	background-color: #FF9800;
+	border: none;
+	padding: 15px;
+	color: white;
+	box-shadow: 0px 2px 2px 1px gray;
+	display: block;
+	margin: auto;
+	position: relative;
+	top: 6%;
+}
+
+
+.cal-container{
+	/*border: 1px solid red;*/
+	width: 90%;
+	display: block;
+	margin: auto;
+
+}
+
+#header {
+	background-color: #3F51B5;
+	color: white;
+	box-shadow: 0px 5px 12px 2px gray;
+	border: none;
+	font-family: 'Roboto', sans-serif;
+	font-size: 120%;
+	font-weight: lighter;
+	width: 100%;
+	
+
+}
+
+
+.header-day{
+	background-color: transparent !important;
+	color: #3F51B5;
+	/*border: 1px solid red;*/
+	text-align: left;
+	font-size: 90%;
+}
+
+
+.money-mark{
+	display: block;
+	margin: auto;
+	border: 1px solid #4CAF50;
+	width: 90%;
+	position: relative;
+	top: 20%;
+	background-color: #4CAF50;
+	
+}
+
+
+.fa-usd {
+	color: White;
+
+	margin-left: 30%;
+}
+
+
+
+#tagClickedDate{
+	font-size: 310%;
+	text-align: center;
+	/*border: 1px solid red;*/
+}
+
+#linkBack{
+	position: fixed;
+	top: 85%;
+}
+
+
+
+#containerSales{
+	/*border: 1px solid blue;
+	width: 40%;
+	height: 55px;
+	position: relative;
+	left: 50%;
+	top: -30px;*/
+
+}
+
+#containerTips{
+	/*border: 1px solid blue;
+	width: 40%;
+	height: 55px;
+	position: relative;
+	left: 50%;
+	top: -30px;*/
+
+}
+
+
+#lblSales{
+	/*border: 1px solid red;*/
+	position: relative;
+	top:22px;
+	font-size: 210%;
+	text-align: right;
+	width: 47%;
+	
+
+}
+
+#lblTips{
+	position: relative;
+	top:22px;
+	font-size: 210%;
+	text-align: right;
+	width: 47%;
+	
+}
+
+
+#txtSales{
+	/*border: 1px solid red;*/
+	
+}
+
+#txtTips {
+	width: 50%;
+}
+
+
+#btnSubmit {
+	width: 50%;
+	margin: auto;
+	background-color: #4CAF50;
+	color: white;
+	text-shadow: none;
+	box-shadow: 0px 2px 1px 1px gray;
+	border: none;
+	
+}
+
+#btnSubmit:active {	
+	background-color: #388E3C;	
+}
+
+#btnEdit {
+	width: 50%;
+	margin: auto;
+	background-color: #4CAF50;
+	color: white;
+	text-shadow: none;
+	box-shadow: 0px 2px 1px 1px gray;
+	border: none;
+	position: fixed;
+	margin-top: 42%;
+	margin-left: 16%;
+	
+}
+
+#btnEdit:active {	
+	background-color: #388E3C;	
+}
+
+
+[data-role=page]{height: 100% !important; position:relative !important;}
+[data-role=footer]{bottom:0; position:absolute !important; top: auto !important; width:100%;}  
+
+.ui-page { -webkit-backface-visibility: hidden; }
+
+
+.fa-arrow-left {
+	color: #FF9800;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

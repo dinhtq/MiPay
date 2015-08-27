@@ -1,0 +1,158 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles/clndr.css">
+  <link rel="stylesheet" href="styles/jquery.mobile-1.4.5.min.css">
+
+  <link rel="stylesheet" href="styles/font-awesome.min.css">
+
+  
+  <link href='http://fonts.googleapis.com/css?family=Roboto:300&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+
+  <link rel="stylesheet" type="text/css" href="styles/main.css">
+
+  
+  
+ 
+</head>
+<body>
+
+  <!-- begin page 1 -->
+  <div data-role="page" id="cal-page" >
+
+    <div data-role="header" id="header" style="text-shadow:0 0 0 transparent; text-shadow:none;">
+      <div id="navbars-icon" style="box-shadow:none;"><i class="fa fa-bars fa-lg"></i></div>
+      <h1>MiPay</h1>
+    </div>
+
+    <div class="cal-container">
+
+    <!--<div class="money-mark"><i class="fa fa-usd fa-lg"></i></div>-->
+    
+        <div class="cal2">
+
+          <script type="text/template" id="template-calendar">
+            <div class="clndr-controls">
+              <div class="clndr-previous-button"><i class="fa fa-chevron-left fa-lg"></i></div>
+              <div class="month"><%= month %></div>
+              <div class="clndr-next-button"><i class="fa fa-chevron-right fa-lg cal-next-button"></i></div>
+            </div>
+            <div class="clndr-grid">
+              <div class="days-of-the-week">
+                <% _.each(daysOfTheWeek, function(day) { %>
+                  <div class="header-day"><%= day %></div>
+                <% }); %>
+                <div class="days">
+                  <% _.each(days, function(day) { %>
+                    <div class="<%= day.classes %>">
+                    <%= day.day %>
+                    
+                                      
+            
+                    </div>
+                  <% }); %>
+                </div>
+              </div>
+            </div>
+            <button id="btnToday">
+            <div class="clndr-today-button">Today</div>
+            </button>
+          </script>
+
+        </div>
+
+
+
+        <a href="#details-page" id="linkDetails" data-transition="flip" style="display:none;" >Go to details</a>
+
+      </div>
+
+    
+
+  </div>
+
+  <!-- end page 1 -->
+
+  
+
+
+
+  <!-- begin page 2 -->
+
+  <div data-role="page" id="details-page">
+
+      
+
+      <div data-role="header" id="header" style="text-shadow:0 0 0 transparent; text-shadow:none;">
+        <div id="navbars-icon" style="box-shadow:none;"><i class="fa fa-bars fa-lg"></i></div>
+        <h1>MiPay</h1>
+      </div>
+
+      <div data-role="main" class="ui-content">
+        <h1 id="tagClickedDate"></h2>
+
+          <div id="content-container" style="margin-bottom: 3%;">
+
+            <table style="width: 100%; font-size: 2.5em;">
+
+              <tr>
+                <td style="text-align: center;">Sales:</td>
+                <td style="text-align: center;">
+                  <div id="imprintedSales" style="color: #3F51B5; margin-right: 52%;">$0.00</div>
+                  <div id="containerSales">
+                    <input type="text" name="sales" id="txtSales" value="">
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td style="text-align: center;">Tips:</td>
+                <td style="text-align: center;">
+                  <div id="imprintedTips" style="color: #3F51B5; margin-right: 52%;">>$0.00</div>
+                  <div id="containerTips">
+                    <input type="text" name="tips" id="txtTips" value="">
+                  </div>
+                </td>
+              </tr>
+
+
+            </table>
+                           
+          </div>
+
+          
+          
+
+          <a id="btnSubmit" class="ui-shadow ui-btn ui-corner-all btnSubmit">Submit</a>
+          <a id="btnEdit" class="ui-shadow ui-btn ui-corner-all btnSubmit">Edit</a>
+
+
+          <div id="linkBack">
+            <a id="anchorBack" href="#cal-page"  data-transition="flip" data-direction="reverse"><i class="fa fa-arrow-left fa-3x"></i></a>
+          </div>
+        
+      </div>
+
+
+
+  </div> <!-- end page 2 -->
+
+  
+
+
+  <script src="json2.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+  <script src= "moment-2.8.3.js"></script>
+
+  <script src="../src/clndr.js"></script>
+  <script src="jquery.mobile-1.4.5.min.js"></script>
+  <script src="site.js"></script>
+
+  <!-- Enable live-reloading in the browser without an extension -->
+  <script src="http://localhost:35729/livereload.js"></script>
+</body>
+</html>
