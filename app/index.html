@@ -3,16 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="jquery.mobile-1.4.5.min.js"></script>
+  <script src="Chart.js"></script>
+  <script src="js/jquery.mmenu.min.js"></script>
+
+
+
   <link rel="stylesheet" href="styles/clndr.css">
   <link rel="stylesheet" href="styles/jquery.mobile-1.4.5.min.css">
 
   <link rel="stylesheet" href="styles/font-awesome.min.css">
 
-  
+  <!--
   <link href='http://fonts.googleapis.com/css?family=Roboto:300&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+-->
+  
+  <link rel="stylesheet" href="styles/jquery.mmenu.all.css">
+
 
 
   <link rel="stylesheet" type="text/css" href="styles/main.css">
+
+
 
   
   
@@ -20,11 +34,27 @@
 </head>
 <body>
 
+
   <!-- begin page 1 -->
   <div data-role="page" id="cal-page" >
 
+    <div data-role="panel" id="panelCalendarPage" data-position="left" data-display="overlay">
+      <ul data-role="listview">
+        <li data-icon="delete"><a href="#" data-rel="close">MiPay</a></li>
+        <li data-icon="false"><a href="#" data-rel="close"><i class="fa fa-calendar fa-lg"></i>&nbsp;&nbsp;Calendar</a></li>
+        <li data-icon="false"><a href="#chart-page"><i class="fa fa-line-chart fa-lg"></i>&nbsp;&nbsp;Chart</a></li>
+        <li data-icon="false"><a href="#report-page"><i class="fa fa-calculator fa-lg"></i>&nbsp;&nbsp;Report</a></li>
+        <li data-icon="false"><a href="#settings-page"><i class="fa fa-th-large fa-lg"></i>&nbsp;&nbsp;Settings</a></li>
+        
+      </ul>
+    </div>
+
+    
+
     <div data-role="header" id="header" style="text-shadow:0 0 0 transparent; text-shadow:none;">
-      <div id="navbars-icon" style="box-shadow:none;"><i class="fa fa-bars fa-lg"></i></div>
+      <div id="navbars-icon" style="box-shadow:none;">
+        <a id="linkPanel" href="#panelCalendarPage" ><i class="fa fa-bars fa-lg"></i></a>
+      </div>
       <h1>MiPay</h1>
     </div>
 
@@ -84,12 +114,29 @@
 
   <div data-role="page" id="details-page">
 
+      <div data-role="panel" id="panelDetailsPage" data-position="left" data-display="overlay">
+        <ul data-role="listview">
+          <li data-icon="delete"><a href="#" data-rel="close">MiPay</a></li>
+          <li data-icon="false"><a href="#cal-page" data-rel="close"><i class="fa fa-calendar fa-lg"></i>&nbsp;&nbsp;Calendar</a></li>
+          <li data-icon="false"><a href="#chart-page"><i class="fa fa-line-chart fa-lg"></i>&nbsp;&nbsp;Chart</a></li>
+          <li data-icon="false"><a href="#report-page"><i class="fa fa-calculator fa-lg"></i>&nbsp;&nbsp;Report</a></li>
+          <li data-icon="false"><a href="#settings-page"><i class="fa fa-th-large fa-lg"></i>&nbsp;&nbsp;Settings</a></li>
+          
+        </ul>
+      </div>
+
       
 
       <div data-role="header" id="header" style="text-shadow:0 0 0 transparent; text-shadow:none;">
-        <div id="navbars-icon" style="box-shadow:none;"><i class="fa fa-bars fa-lg"></i></div>
+        <div id="navbars-icon" style="box-shadow:none;">
+          <a id="linkPanel" href="#panelDetailsPage" ><i class="fa fa-bars fa-lg"></i></a>
+        </div>
         <h1>MiPay</h1>
       </div>
+
+      
+
+
 
       <div data-role="main" class="ui-content">
         <h1 id="tagClickedDate"></h2>
@@ -140,19 +187,334 @@
 
   </div> <!-- end page 2 -->
 
+
+  <!-- begin chart page -->
+  <div data-role="page" id="chart-page">
+
+    <div data-role="panel" id="panelChartPage" data-position="left" data-display="overlay">
+        <ul data-role="listview">
+          <li data-icon="delete"><a href="#" data-rel="close">MiPay</a></li>
+          <li data-icon="false"><a href="#cal-page" data-rel="close"><i class="fa fa-calendar fa-lg"></i>&nbsp;&nbsp;Calendar</a></li>
+          <li data-icon="false"><a href="#chart-page"><i class="fa fa-line-chart fa-lg"></i>&nbsp;&nbsp;Chart</a></li>
+          <li data-icon="false"><a href="#report-page"><i class="fa fa-calculator fa-lg"></i>&nbsp;&nbsp;Report</a></li>
+          <li data-icon="false"><a href="#settings-page"><i class="fa fa-th-large fa-lg"></i>&nbsp;&nbsp;Settings</a></li>
+          
+        </ul>
+      </div>
+
+    <div data-role="header" id="header" style="text-shadow:0 0 0 transparent; text-shadow:none;">
+      <div id="navbars-icon" style="box-shadow:none;">
+        <a id="linkPanel" href="#panelChartPage" ><i class="fa fa-bars fa-lg"></i></a>
+      </div>
+      <h1>MiPay</h1>
+    </div>
+
+      <div data-role="main" class="ui-content">
+        
+        <canvas id="myChart" width="350" height="400"></canvas>
+
+
+          
+        <div id="xAxisTag">
+          <span id="preMMMTag">Aug&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+          <span id="currentMMMTag">Sep&nbsp;</span>
+          <span id="currentYYYYTag">2015</span>
+        </div>
+          
+        <div id="time-scale-containers">
+
+          <div id="btn1Week-container" class="btnTimeScaleBtns">
+            <button id="btn1Week" class="ui-shadow ui-btn ui-corner-all">1W</button>
+          </div>
+          <div id="btn3Week-container" class="btnTimeScaleBtns">
+            <button id="btn3Week" class="ui-shadow ui-btn ui-corner-all">3W</button>
+          </div>
+          <div id="btn6Month-container" class="btnTimeScaleBtns">
+            <button id="btn6Month" class="ui-shadow ui-btn ui-corner-all">6M</button>
+          </div>
+          <div id="btn1Year-container" class="btnTimeScaleBtns">
+            <button id="btn1Year" class="ui-shadow ui-btn ui-corner-all">1Y</button>
+          </div>
+          <div id="btn5Year-container" class="btnTimeScaleBtns">
+            <button id="btn5Year" class="ui-shadow ui-btn ui-corner-all">5Y</button>
+          </div>
+
+        </div><!-- end time-scale-containers-->
+
+        <div id="sales-tips-filtered-container">
+          <div id="btnSalesContainer" class="btnSalesTipsBtns">
+            <button id="btnSales" class="ui-shadow ui-btn ui-corner-all btnSales-clicked">Sales</button>
+          </div>
+          <div id="btnTipsContainer" class="btnSalesTipsBtns">
+            <button id="btnTips" class="ui-shadow ui-btn ui-corner-all btnTips-clicked">Tips</button>
+          </div>
+        </div>
+ 
+      </div>
+
+  </div>
+  <!-- end chart page -->
+
+    <!-- begin report page -->
+  <div data-role="page" id="report-page">
+
+    <div data-role="panel" id="panelReportPage" data-position="left" data-display="overlay">
+        <ul data-role="listview">
+          <li data-icon="delete"><a href="#" data-rel="close">MiPay</a></li>
+          <li data-icon="false"><a href="#cal-page" data-rel="close"><i class="fa fa-calendar fa-lg"></i>&nbsp;&nbsp;Calendar</a></li>
+          <li data-icon="false"><a href="#chart-page"><i class="fa fa-line-chart fa-lg"></i>&nbsp;&nbsp;Chart</a></li>
+          <li data-icon="false"><a href="#report-page"><i class="fa fa-calculator fa-lg"></i>&nbsp;&nbsp;Report</a></li>
+          <li data-icon="false"><a href="#settings-page"><i class="fa fa-th-large fa-lg"></i>&nbsp;&nbsp;Settings</a></li>
+          
+        </ul>
+      </div>
+
+    <div data-role="header" id="header" style="text-shadow:0 0 0 transparent; text-shadow:none;">
+      <div id="navbars-icon" style="box-shadow:none;">
+        <a id="linkPanel" href="#panelReportPage" ><i class="fa fa-bars fa-lg"></i></a>
+      </div>
+      <h1>MiPay</h1>
+    </div>
+
+      <div data-role="main" class="ui-content">
+        
+        <div id="fromToTitles-container">
+          <div class="fromTitles">FROM</div>
+          <div class="toTitles">TO</div>
+
+        </div>
+
+
+        <div id="dateFrom-container">
+          <a href="#popupFromDate-container" data-rel="popup">
+            <button class="ui-shadow ui-btn ui-corner-all btnDateRange">
+              <span id="dateFromMM">00</span>/<span id="dateFromDD">00</span>/<span id="dateFromYYYY">0000</span>
+            </button>
+          </a>
+        </div>
+
+        <div id="dateTo-container">
+          <a href="#popupToDate-container" data-rel="popup">
+            <button class="ui-shadow ui-btn ui-corner-all btnDateRange">
+              <span id="dateToMM">00</span>/<span id="dateToDD">00</span>/<span id="dateToYYYY">0000</span>
+            </button>
+          </a>
+        </div>
+
+
+        <!--begin FROM date range popups-->
+        <div id="popupFromDate-container" data-role="popup">
+          
+          <div style="margin-top: 4%;">
+            <span style="margin-left: 14%;"><i id="fromPlusMM"  class="fa fa-caret-up fa-2x"></i></span>
+            <span  style="margin-left: 26%;"><i id="fromPlusDD" class="fa fa-caret-up fa-2x"></i></span>
+            <span  style="margin-left: 28%;"><i id="fromPlusYYYY" class="fa fa-caret-up fa-2x"></i></span>
+          </div>
+
+
+          <div id="popupFromDate">
+            <span id="popupFromMM">00</span>
+            <span id="popupFromDD">00</span>
+            <span id="popupFromYYYY">0000</span>
+          </div>
+
+          <div>
+            <span id="fromMinusMM" style="margin-left: 14%;"><i class="fa fa-caret-down fa-2x"></i></span>
+            <span id="fromMinusDD" style="margin-left: 26%;"><i class="fa fa-caret-down fa-2x"></i></span>
+            <span id="fromMinusYYYY" style="margin-left: 28%;"><i class="fa fa-caret-down fa-2x"></i></span>
+          </div>
+
+          <div style="margin-top:2%;">
+            <div id="btnCancelPopupFrom-container" style="width:30%; float: left; margin-left: 17%;">
+              <button id="btnCancelPopupFrom" class="ui-shadow ui-btn ui-corner-all btnDateRange" style="font-size: 1.1em;background-color: #c0392b; text-shadow: none; color: white;">Cancel</button>
+            </div>
+            <div id="btnSetPopupFrom-container" style="width:30%; float: left; margin-left: 5%;">
+              <button id="btnSetPopupFrom" class="ui-shadow ui-btn ui-corner-all btnDateRange" style="font-size: 1.1em; background-color: #2ecc71; text-shadow: none; color: white;">Set</button>
+            </div>
+          </div>
+
+        </div>
+        <!--end FROM date range popups-->
+
+
+        <!--begin TO date range popups-->
+        <div id="popupToDate-container" data-role="popup">
+
+           <div style="margin-top: 4%;">
+              <span style="margin-left: 14%;"><i id="toPlusMM"  class="fa fa-caret-up fa-2x"></i></span>
+              <span  style="margin-left: 26%;"><i id="toPlusDD" class="fa fa-caret-up fa-2x"></i></span>
+              <span  style="margin-left: 28%;"><i id="toPlusYYYY" class="fa fa-caret-up fa-2x"></i></span>
+            </div>
+
+          <div id="popupToDate">
+            <span id="popupToMM">00</span>
+            <span id="popupToDD">00</span>
+            <span id="popupToYYYY">0000</span>
+          </div>
+
+          <div>
+            <span style="margin-left: 14%;"><i id="toMinusMM"  class="fa fa-caret-down fa-2x"></i></span>
+            <span style="margin-left: 26%;"><i id="toMinusDD"  class="fa fa-caret-down fa-2x"></i></span>
+            <span style="margin-left: 28%;"><i id="toMinusYYYY"  class="fa fa-caret-down fa-2x"></i></span>
+          </div>
+
+          <div style="margin-top:2%;">
+            <div id="btnCancelPopupTo-container" style="width:30%; float: left; margin-left: 17%;">
+              <button id="btnCancelPopupTo" class="ui-shadow ui-btn ui-corner-all btnDateRange" style="font-size: 1.1em;background-color: #c0392b; text-shadow: none; color: white;">Cancel</button>
+            </div>
+            <div id="btnSetPopupTo-container" style="width:30%; float: left; margin-left: 5%;">
+              <button id="btnSetPopupTo" class="ui-shadow ui-btn ui-corner-all btnDateRange" style="font-size: 1.1em; background-color: #2ecc71; text-shadow: none; color: white;">Set</button>
+            </div>
+          </div>
+          
+        </div>
+        <!--end TO date range popups-->
+
+        <div id="totalSalesTips-container" style="margin-bottom: 3%; position: fixed; top: 29%;">
+
+            <table style="width: 100%; font-size: 1.8em; margin-left: 3%;">
+
+              <tr>
+                <td style="text-align: left;">Total Sales:</td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="color: #3F51B5; margin-right: 52%;">$<span id="lblTotalSales">0.00</span></div>
+                </td>
+              </tr>
+
+              <tr>
+                <td style="text-align: left;">Total Tips:</td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="color: #3F51B5; margin-right: 52%;">$<span id="lblTotalTips">0.00</span></div>
+                </td>
+              </tr>
+
+              <tr>
+                <td style="text-align: left;">Adjusted Pay:</td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="color: #3F51B5; margin-right: 52%;">$<span id="lblAdjustedPay">0.00</span></div>
+                </td>
+              </tr>
+               <tr>
+                <td style="text-align: left;">Cash Pay:</td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="color: #3F51B5; margin-right: 52%;">$<span id="lblCashPay">0.00</span></div>
+                </td>
+              </tr>
+              <tr>
+                <td style="text-align: left;">Adjusted Check Pay:</td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="color: #3F51B5; margin-right: 52%;">$<span id="lblAdjustedCheckPay">0.00</span></div>
+                </td>
+              </tr>
+
+
+            </table>
+                           
+          </div>
+
+        
+
+       
+ 
+      </div>
+
+  </div>
+  <!-- end report page -->
+
+
+<!-- begin settings page -->
+  <div data-role="page" id="settings-page">
+
+    <div data-role="panel" id="panelSettingsPage" data-position="left" data-display="overlay">
+        <ul data-role="listview">
+          <li data-icon="delete"><a href="#" data-rel="close">MiPay</a></li>
+          <li data-icon="false"><a href="#cal-page" data-rel="close"><i class="fa fa-calendar fa-lg"></i>&nbsp;&nbsp;Calendar</a></li>
+          <li data-icon="false"><a href="#chart-page"><i class="fa fa-line-chart fa-lg"></i>&nbsp;&nbsp;Chart</a></li>
+          <li data-icon="false"><a href="#report-page"><i class="fa fa-calculator fa-lg"></i>&nbsp;&nbsp;Report</a></li>
+          <li data-icon="false"><a href="#settings-page"><i class="fa fa-th-large fa-lg"></i>&nbsp;&nbsp;Settings</a></li>
+          
+        </ul>
+      </div>
+
+    <div data-role="header" id="header" style="text-shadow:0 0 0 transparent; text-shadow:none;">
+      <div id="navbars-icon" style="box-shadow:none;">
+        <a id="linkPanel" href="#panelSettingsPage" ><i class="fa fa-bars fa-lg"></i></a>
+      </div>
+      <h1>MiPay</h1>
+    </div>
+
+      <div data-role="main" class="ui-content">
+        
+      <div id="totalSalesTips-container" >
+
+            <table style="width: 100%; font-size: 1.8em; margin-left: 3%;">
+
+              <tr>
+                <td style="text-align: left;">Debug Mode:</td>
+                <td>
+                  <div style="color: #3F51B5; margin-right: 52%;"><span id="lblDebugMode">OFF</span></div>
+                </td>
+              </tr>
+              
+
+              <tr colspan="2">
+                <td><button id="btnDebugActionON" class="ui-shadow ui-btn ui-corner-all">Turn Debug On</button></td>
+              </tr>
+              <tr colspan="2">
+                <td><button id="btnDebugActionOFF" class="ui-shadow ui-btn ui-corner-all">Turn Debug OFF</button></td>
+              </tr>
+              
+
+              
+            </table>
+                           
+          </div>
+
+
+       
+
+  </div>
+  <!-- end settings page -->
+
   
 
 
   <script src="json2.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  
   <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
   <script src= "moment-2.8.3.js"></script>
 
   <script src="../src/clndr.js"></script>
-  <script src="jquery.mobile-1.4.5.min.js"></script>
-  <script src="site.js"></script>
 
-  <!-- Enable live-reloading in the browser without an extension -->
-  <script src="http://localhost:35729/livereload.js"></script>
+  <!-- debugTest.js generates and populates fake data for testing purposes -->
+  <script src="js/debugTest.js"></script>
+  
+  <!-- site.js handles the calendar logic -->
+  <script src="site.js"></script>
+  <!-- chartCode.js handles the charting logic -->
+  <script src="js/chartCode.js"></script>
+  <!-- reports.js handles the reports logic -->
+  <script src="js/reports.js"></script>
+
+
+  <script src="js/tools.js"></script>
+
+
+  
+
+  
+  
+
+  
 </body>
 </html>

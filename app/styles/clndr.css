@@ -150,11 +150,15 @@ p {
   background: url('../images/icon-dollar.png') center center no-repeat;
   background-size: 64%;
 }
+
+/*
 .cal2 .clndr .clndr-grid .day.today {
   background: url('../images/todayBG.png') center center no-repeat;
   background-size: 101%;
 
 }
+*/
+
 .cal2 .clndr .clndr-grid .empty,
 .cal2 .clndr .clndr-grid .adjacent-month {
   float: left;

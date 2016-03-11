@@ -1,5 +1,5 @@
 /*
- *               ~ CLNDR v1.2.14 ~
+ *               ~ CLNDR v1.2.16 ~
  * ==============================================
  *       https://github.com/kylestetz/CLNDR
  * ==============================================
@@ -823,8 +823,8 @@
     self.render();
 
     if(!self.options.lengthOfTime.days && !self.options.lengthOfTime.months) {
-      if(self.options.clickEvents.previousMonth) {
-        self.options.clickEvents.previousMonth.apply( self, [moment(self.month)] );
+      if(self.options.clickEvents.nextMonth) {
+        self.options.clickEvents.nextMonth.apply( self, [moment(self.month)] );
       }
       if(self.options.clickEvents.onMonthChange) {
         self.options.clickEvents.onMonthChange.apply( self, [moment(self.month)] );
@@ -866,8 +866,13 @@
     } else if(self.options.lengthOfTime.months) {
       // set the intervalStart to this month.
       self.intervalStart = moment().startOf('month');
-      self.intervalEnd = self.intervalStart.clone().add(self.options.lengthOfTime.months || self.options.lengthOfTime.interval, 'months').subtract(1, 'days').endOf('month');
+      self.intervalEnd = self.intervalStart.clone()
+        .add(self.options.lengthOfTime.months || self.options.lengthOfTime.interval, 'months')
+        .subtract(1, 'days')
+        .endOf('month');
     } else if(monthChanged) {
+      // reset the start interval for the current month
+      self.intervalStart = moment().startOf('month');
       // no need to re-render if we didn't change months.
       self.render();
 
