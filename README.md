@@ -12,10 +12,10 @@ Make sure you view the demo in device mode, preferably iPhone 6.
 
 MiPay is currently built using:
 
-CLNDR.js for the calendar interface
-Moment.js to manage dates
-jQuery Mobile for mobile UI framework
-Chart.js as the charting library
+CLNDR.js for the calendar interface<br>
+Moment.js to manage dates<br>
+jQuery Mobile for mobile UI framework<br>
+Chart.js as the charting library<br>
 
 
 --------
